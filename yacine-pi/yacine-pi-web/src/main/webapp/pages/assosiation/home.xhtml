@@ -1,0 +1,142 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template2.xhtml">
+
+
+	<ui:define name="title">Assosiation Space</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+			<h:dataTable value="#{assosBean.events}" var="r" border="2"
+				rendered="#{assosBean.sp}">
+
+				<h:column>
+					<p:panel id="custom" header="Event Details"
+						style="margin-bottom:20px">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:graphicImage value="/resources/img/#{r.category}" width="200" />
+							<div>
+								
+								<div>
+									<h1>
+										<a style="color: #1286AF;">#{r.title}</a>
+									</h1>
+
+									<h3 class="event-title">
+										<a href="#">#{r.description}</a>
+									</h3>
+
+									<br />
+									<h2 style="color: #C0BDBE">#{r.datedebut}</h2>
+								</div>
+							</div>
+							<h:commandButton action="#{assosBean.doShowSponsorEvent()}"
+								value="Show List Sponsor">
+								<f:setPropertyActionListener value="#{r}"
+									target="#{assosBean.eventsSelected}"></f:setPropertyActionListener>
+							</h:commandButton>
+						</h:panelGrid>
+					</p:panel>
+
+				</h:column>
+
+
+
+
+			</h:dataTable>
+
+
+
+			<p:panel id="custom" header="Event Details"
+				style="margin-bottom:20px" rendered="#{assosBean.showDetails}">
+				<h:panelGrid columns="2" cellpadding="10">
+					<h:graphicImage
+						value="/resources/img/#{assosBean.eventsSelected.category}"
+						width="200" />
+					<div>
+						<div></div>
+						<div>
+							<h1>
+								<a style="color: #1286AF;">#{assosBean.eventsSelected.title}</a>
+							</h1>
+
+							<h3 class="event-title">
+								<a href="#">#{assosBean.eventsSelected.description}</a>
+							</h3>
+							<h:commandButton action="#{assosBean.doCancel()}"
+								value="Back to List">
+
+							</h:commandButton>
+
+						</div>
+					</div>
+
+				</h:panelGrid>
+			</p:panel>
+
+			<h:dataTable value="#{assosBean.sponsors}" var="r" border="2"
+				rendered="#{assosBean.showDetails}">
+
+
+				<h:column>
+					<h:graphicImage value="/resources/img/#{r.userSponsor.firstname}"
+						width="200" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="produit" />
+					</f:facet>
+
+					<h:outputText value="#{r.produit}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="quantity" />
+					</f:facet>
+					<h:outputText value="#{r.quantity}" />
+				</h:column>
+
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="sponsor name" />
+					</f:facet>
+					<h:outputText value="#{r.userSponsor.username}" />
+				</h:column>
+				<h:column>
+					<f:facet name="header">
+						<h:outputText value="#" />
+					</f:facet>
+					<h:commandButton action="#{assosBean.doSelectSponsor()}"
+						value="Show sponsor">
+						<f:setPropertyActionListener value="#{r}"
+							target="#{assosBean.sponsor}"></f:setPropertyActionListener>
+					</h:commandButton>
+					<h:commandButton action="#{assosBean.doCancel()}"
+						value="Back to List">
+					</h:commandButton>
+				</h:column>
+
+			</h:dataTable>
+			<h:panelGrid columns="2" rendered="#{assosBean.showsponsor}"
+				border="2">
+				<h1 style="color: blue">sponsor name</h1>
+				<h1>value="#{assosBean.sponsor.userSponsor.username}</h1>
+				<h:commandButton action="#{assosBean.dovalidateSponsor()}"
+					value="validate sponsor">
+
+				</h:commandButton>
+				<h:commandButton action="#{assosBean.doCancel()}"
+					value="Back to List">
+
+				</h:commandButton>
+			</h:panelGrid>
+
+		</h:form>
+	</ui:define>
+</ui:composition>

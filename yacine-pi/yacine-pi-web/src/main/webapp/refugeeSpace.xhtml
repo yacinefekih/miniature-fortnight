@@ -1,0 +1,209 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template2.xhtml">
+
+
+	<ui:define name="title">Refuge space</ui:define>
+	<ui:define name="content">
+
+		<h:form>
+
+
+
+			<h:dataTable value="#{refugeeBean.sponsors}" var="r"
+				rendered="#{refugeeBean.doshowlist}">
+
+				<h:column>
+					<p:growl id="msgs" showDetail="true" />
+					<p:panel id="custom" header="Event Details"
+						style="margin-bottom:20px ">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:column>
+								<h:column>
+									<h:graphicImage
+										value="/resources/img/#{r.userSponsor.firstname}" width="200" />
+								</h:column>
+								<h:column>
+									<h:graphicImage value="/resources/img/#{r.events.category}"
+										width="200" />
+								</h:column>
+							</h:column>
+							<div>
+								<div></div>
+								<div>
+									<h1>
+										<a style="color: #1286AF;">#{r.events.title}</a>
+									</h1>
+
+									<h3 class="event-title">
+										<a href="#">#{r.events.description}</a>
+									</h3>
+									<h4 style="color: #AB111D">Assosition Name :
+										#{r.events.userAssos.username}</h4>
+									<br />
+									<h2 style="color: #C0BDBE">#{r.events.datedebut}</h2>
+								</div>
+							</div>
+						</h:panelGrid>
+
+						<f:facet name="actions">
+							<h:commandLink
+								styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+								<h:outputText styleClass="ui-icon ui-icon-help" />
+							</h:commandLink>
+							<h:commandLink
+								styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+								<h:outputText styleClass="ui-icon ui-icon-star" />
+							</h:commandLink>
+							<h:commandButton action="#{refugeeBean.doShowevent()}"
+								value="Show event">
+								<f:setPropertyActionListener value="#{r.events}"
+									target="#{refugeeBean.eventsSelected}"></f:setPropertyActionListener>
+							</h:commandButton>
+						</f:facet>
+					</p:panel>
+				</h:column>
+
+
+			</h:dataTable>
+
+
+
+
+
+			<h:dataTable value="#{refugeeBean.events}" var="r"
+				rendered="#{refugeeBean.doshowlist}">
+
+				<h:column>
+
+					<p:growl id="msgs" showDetail="true" />
+					<p:panel id="v" header="Event Details"
+						style="margin-bottom:20px ">
+						<h:panelGrid columns="2" cellpadding="10">
+							<h:column>
+
+
+								<h:graphicImage value="/resources/img/#{r.category}" width="200" />
+							</h:column>
+
+							<div>
+								<div></div>
+								<div>
+									<h1>
+										<a style="color: #1286AF;">#{r.title}</a>
+									</h1>
+
+									<h3 class="event-title">
+										<a href="#">#{r.description}</a>
+									</h3>
+									<h4 style="color: #AB111D">Assosition Name :
+										#{r.userAssos.username}</h4>
+									<br />
+									<h2 style="color: #C0BDBE">#{r.datedebut}</h2>
+								</div>
+							</div>
+						</h:panelGrid>
+
+						<h:commandButton action="#{refugeeBean.doShowevent()}"
+							value="Show comment">
+							<f:setPropertyActionListener value="#{r}"
+								target="#{refugeeBean.eventsSelected}"></f:setPropertyActionListener>
+						</h:commandButton>
+
+					</p:panel>
+				</h:column>
+
+
+
+
+			</h:dataTable>
+
+
+			<h:panelGrid rendered="#{refugeeBean.doShowevent}">
+
+
+
+
+
+
+				<p:growl id="msgs" showDetail="true" />
+				<p:panel id="g" header="Event Details"
+					style="margin-bottom:20px ">
+					<h:panelGrid columns="2" cellpadding="10">
+						
+								<h:graphicImage
+									value="/resources/img/#{refugeeBean.eventsSelected.category}"
+									width="200" />
+							
+						<div>
+							<div></div>
+							<div>
+								<h1>
+									<a style="color: #1286AF;">#{refugeeBean.eventsSelected.title}</a>
+								</h1>
+
+								<h3 class="event-title">
+									<a href="#">#{refugeeBean.eventsSelected.description}</a>
+								</h3>
+								<h4 style="color: #AB111D">Assosition Name :
+									#{r.events.userAssos.username}</h4>
+								<br />
+								<h2 style="color: #C0BDBE">#{refugeeBean.eventsSelected.userAssos.username}</h2>
+							</div>
+						</div>
+					</h:panelGrid>
+				</p:panel></h:panelGrid>
+
+				<h:dataTable value="#{refugeeBean.comment}" var="r"
+					rendered="#{refugeeBean.doShowevent}" 	>
+					<h:column >
+
+
+						<h:graphicImage value="/resources/img/#{r.userRefugee.firstname}"
+							width="50" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="Comment " />
+						</f:facet>
+						<h:outputText value="#{r.commentaire}" />
+					</h:column>
+					<h:column>
+						<f:facet name="header">
+							<h:outputText value="date of comment " />
+						</f:facet>
+						<h:outputText value="#{r.commentDetailsId.date}" />
+					</h:column>
+
+
+
+
+				</h:dataTable>
+				
+				<h:panelGrid columns="4" rendered="#{refugeeBean.doShowevent}">
+					<h:commandButton action="#{refugeeBean.doBack()}"
+						value="Back to list" />
+					<h:commandButton action="#{refugeeBean.doshowCom()}"
+						value="Comment" />
+				</h:panelGrid>
+				<h:panelGrid columns="2" rendered="#{refugeeBean.doshowCom}"
+					border="2">
+					<h:outputText value="comment" />
+					<h:inputText value="#{refugeeBean.commentaire}" />
+					<h:commandButton action="#{refugeeBean.doComment()}"
+						value="Add comment">
+
+					</h:commandButton>
+
+				</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+
+</ui:composition>

@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><ui:insert name="title" /></title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="responsive.css" />
+	<nav class="mainmenu-area stricky">
+		<div class="container">
+			<div class="navigation pull-left">
+				<div class="nav-header">
+					<ul>
+						<li class="dropdown"><a href="#">Home</a></li>
+						<li><a href="about.html">About</a></li>
+
+						<li class="dropdown"><a href="#">Events</a></li>
+
+						<li class="dropdown"><a href="#">Gallery</a></li>
+						<li class="dropdown"><a href="#">Pages</a>
+							<ul class="submenu">
+								<li><a href="donations.html">Donation</a></li>
+								<li><a href="faq.html">FAQ</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#">Blog</a>
+							<ul class="submenu">
+								<li><a href="blog-style-one.html">Blog Style One</a></li>
+								<li><a href="blog-style-two.html">Blog Style Two</a></li>
+								<li><a href="blog-details.html">Blog Details</a></li>
+							</ul></li>
+						<li><a href="contact.html">Contact</a></li>
+						<li id="content" class="dropdown"><ui:insert name="content">
+                [Content goes here]
+            </ui:insert></li>
+					</ul>
+				</div>
+				<div class="nav-footer">
+					<button>
+						<i class="fa fa-bars"></i>
+					</button>
+				</div>
+			</div>
+
+		</div>
+	</nav>
+</h:head>
+<h:body>
+	<section class="rev_slider_wrapper">
+		<div id="slider1" class="rev_slider" data-version="5.0">
+			<ul>
+				<li data-transition="parallaxvertical"><h:graphicImage
+						value="/resources/img/aze.gif" alt="" width="1200" height="400"
+						data-bgposition="top center" data-bgfit="cover"
+						data-bgrepeat="no-repeat" data-bgparallax="1" />
+
+					<div class="tp-caption sfl tp-resizeme thm-banner-h1" data-x="left"
+						data-hoffset="0" data-y="top" data-voffset="225"
+						data-whitespace="nowrap" data-transform_idle="o:1;"
+						data-transform_in="o:0" data-transform_out="o:0" data-start="500">
+
+					</div>
+					<div class="tp-caption sfr tp-resizeme thm-banner-h1 heavy"
+						data-x="left" data-hoffset="0" data-y="top" data-voffset="290"
+						data-whitespace="nowrap" data-transform_idle="o:1;"
+						data-transform_in="o:0" data-transform_out="o:0" data-start="1000">
+						We need your support</div>
+					<div class="tp-caption sfb tp-resizeme thm-banner-h3" data-x="left"
+						data-hoffset="0" data-y="top" data-voffset="368"
+						data-whitespace="nowrap" data-transform_idle="o:1;"
+						data-transform_in="o:0" data-transform_out="o:0" data-start="1500">
+						Became a part to change the world</div>
+
+					<div class="tp-caption sfl tp-resizeme" data-x="left"
+						data-hoffset="0" data-y="top" data-voffset="505"
+						data-whitespace="nowrap" data-transform_idle="o:1;"
+						data-transform_in="o:0" data-transform_out="o:0" data-start="2300">
+						<a href="#" class="thm-btn">Donate Now</a>
+					</div></li>
+
+			</ul>
+		</div>
+	</section>
+
+	<div id="container">
+		<table id="identity-nav">
+			<tr>
+				<td>
+					<div></div>
+				</td>
+			</tr>
+
+		</table>
+		<div></div>
+
+
+
+		<div id="footer">
+			<h3>
+				<i> ESPRIT 2017/2018</i>
+			</h3>
+		</div>
+	</div>
+	<footer class="footer sec-padding">
+		<div class="container">
+			<div>
+				<div>
+					<div class="footer-widget about-widget">
+						<a href="#"> <h:graphicImage value="/resources/img/IFR.png"
+								width="200" />
+
+						</a>
+						<p>Refugee group for developement </p>
+						<ul class="contact">
+							<li><i class="fa fa-map-marker"></i> <span>Esprit
+									Ariana </span></li>
+							<li><i class="fa fa-phone"></i> <span>(216)
+									50447079</span></li>
+							<li><i class="fa fa-envelope-o"></i> <span>yacine.fekihsaid@gmail.com</span></li>
+						</ul>
+
+					</div>
+				</div>
+
+
+
+			</div>
+		</div>
+	</footer>
+	
+	<section class="footer-bottom">
+		<div class="container text-center">
+			<p>
+				Theme Created By <a href="#">TEMPLATE PATH</a> with love
+			</p>
+		</div>
+	</section>
+
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.kenburn.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.layeranimation.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.migration.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.navigation.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.parallax.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.slideanims.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.video.min.js" />
+	<h:outputScript library="js" name="custom.js" />
+	<h:outputStylesheet library="js" name="jquery-1.11.1.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputScript library="js" name="jquery.bxslider.min.js" />
+	<h:outputScript library="js" name="owl.carousel.min.js" />
+	<h:outputScript library="js" name="jquery-parallax.js" />
+	<h:outputScript library="js" name="validate.js" />
+	<h:outputScript library="js" name="jquery.mixitup.min.js" />
+	<h:outputScript library="js" name="jquery.fancybox.pack.js" />
+	<h:outputScript library="js" name="jquery.easing.min.js" />
+	<h:outputScript library="js" name="circle-progress.js" />
+	<h:outputScript library="js" name="jquery.appear.js" />
+	<h:outputScript library="js" name="gmap.js" />
+	<h:outputScript library="js" name="isotope.pkgd.min.js" />
+	<h:outputScript library="js/jquery-ui-1.11.4" name="jquery-ui.js" />
+	<h:outputScript library="js" name="jquery.themepunch.tools.min.js" />
+	<h:outputScript library="js" name="jquery.themepunch.revolution.min.js" />
+	<h:outputScript library="js"
+		name="extensions/revolution.extension.actions.min.js" />
+	<h:outputScript library="js" name="jquery.countTo.js" />
+
+
+	
+</h:body>
+
+</html>

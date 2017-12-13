@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+<h:head>
+	<title><ui:insert name="title" /></title>
+	<h:outputStylesheet library="css" name="style.css" />
+	<h:outputStylesheet library="css" name="responsive.css" />
+
+
+
+	<nav class="mainmenu-area stricky">
+		<div class="container">
+			<div class="navigation pull-left">
+				<div class="nav-header" style="margin-left: 50px ">
+				
+						<div style="float: right;  position: left;" >
+								<h:panelGrid  columns="2" >
+
+									<h:graphicImage
+										value="/resources/img/#{identity.user.firstname}" width="100" />
+
+
+									<output>#{identity.user.type}</output>
+									<br />
+
+									<output>#{identity.user.username}</output>
+									<br />
+
+									<output>#{identity.user.lastname}</output>
+									<br />
+								</h:panelGrid>
+							</div>
+							
+					<ul >
+					
+						<li class="dropdown"><a href="#">Home</a></li>
+						<li><a href="about.html">About</a></li>
+
+						<li class="dropdown"><a href="#">Events</a></li>
+
+						<li class="dropdown"><a href="#">Gallery</a></li>
+						<li class="dropdown"><a href="#">Pages</a>
+							<ul class="submenu">
+								<li><a href="donations.html">Donation</a></li>
+								<li><a href="faq.html">FAQ</a></li>
+							</ul></li>
+						<li class="dropdown"><a href="#">Blog</a>
+							<ul class="submenu">
+								<li><a href="blog-style-one.html">Blog Style One</a></li>
+								<li><a href="blog-style-two.html">Blog Style Two</a></li>
+								<li><a href="blog-details.html">Blog Details</a></li>
+							</ul></li>
+						<li><a href="http://localhost:18080/yacine-pi-web/login.jsf">Logout</a></li>
+
+
+
+
+					</ul>
+					
+				</div>
+			</div>
+
+		</div>
+	</nav>
+</h:head>
+<h:body>
+
+
+
+	<div id="container"
+		style="background-image: url('file:///C:/Users/Yacine_Fekih/Desktop/balloons_background_multi-colored_83498_2560x1440.jpg');">
+		<div class="tp-caption sfr tp-resizeme thm-banner-h1 heavy"
+			data-x="left" data-hoffset="0" data-y="top" data-voffset="290"
+			data-whitespace="nowrap" data-transform_idle="o:1;"
+			data-transform_in="o:0" data-transform_out="o:0" data-start="1000">
+			We need your support</div>
+		<table id="identity-nav">
+			<tr>
+				<td>
+					<div></div>
+				</td>
+			</tr>
+
+		</table>
+		<div></div>
+
+
+		<div id="content">
+
+			<ui:insert name="content">
+                [Content goes here]
+            </ui:insert>
+		</div>
+		<div id="footer">
+			<h3>
+				<i> ESPRIT 2017/2018</i>
+			</h3>
+		</div>
+	</div>
+	<footer class="footer sec-padding">
+		<div class="container">
+			<div>
+				<div>
+					<div class="footer-widget about-widget">
+						<a href="#"> <h:graphicImage value="/resources/img/IFR.png"
+								width="200" />
+
+						</a>
+
+					</div>
+				</div>
+
+
+			</div>
+		</div>
+	</footer>
+
+
+
+
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.kenburn.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.layeranimation.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.carousel.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.migration.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.navigation.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.parallax.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.slideanims.min.js" />
+	<h:outputScript library="js/extensions"
+		name="revolution.extension.video.min.js" />
+	<h:outputScript library="js" name="custom.js" />
+	<h:outputStylesheet library="js" name="jquery-1.11.1.min.js" />
+	<h:outputScript library="js" name="bootstrap.min.js" />
+	<h:outputScript library="js" name="jquery.bxslider.min.js" />
+	<h:outputScript library="js" name="owl.carousel.min.js" />
+	<h:outputScript library="js" name="jquery-parallax.js" />
+	<h:outputScript library="js" name="validate.js" />
+	<h:outputScript library="js" name="jquery.mixitup.min.js" />
+	<h:outputScript library="js" name="jquery.fancybox.pack.js" />
+	<h:outputScript library="js" name="jquery.easing.min.js" />
+	<h:outputScript library="js" name="circle-progress.js" />
+	<h:outputScript library="js" name="jquery.appear.js" />
+	<h:outputScript library="js" name="gmap.js" />
+	<h:outputScript library="js" name="isotope.pkgd.min.js" />
+	<h:outputScript library="js/jquery-ui-1.11.4" name="jquery-ui.js" />
+	<h:outputScript library="js" name="jquery.themepunch.tools.min.js" />
+	<h:outputScript library="js" name="jquery.themepunch.revolution.min.js" />
+	<h:outputScript library="js"
+		name="extensions/revolution.extension.actions.min.js" />
+	<h:outputScript library="js" name="jquery.countTo.js" />
+
+</h:body>
+
+</html>

@@ -1,0 +1,162 @@
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:jsf="http://xmlns.jcp.org/jsf"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/template/template2.xhtml">
+
+
+	<ui:define name="title">Sponsor Space</ui:define>
+	<ui:define name="content">
+		<h:form>
+			<p:growl id="growl" showDetail="true" sticky="true" />
+
+			<h:panelGrid>
+
+				<p:commandButton value="Show notification"
+					actionListener="#{sponsorBean.saveMessage}" update="growl" />
+					
+			</h:panelGrid>
+			<div style="width: 800px; margin: 0 auto;">
+				<h:dataTable value="#{sponsorBean.events}" var="r" columns="2"
+					rendered="#{not sponsorBean.showDetails}">
+					<h:column>
+						<p:growl id="msgs" showDetail="true" />
+						<p:panel id="custom" header="Event Details"
+							style="margin-bottom:20px ">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:column>
+									<h:column>
+										<h:graphicImage value="/resources/img/IFR.png" width="200" />
+									</h:column>
+									<h:column>
+										<h:graphicImage value="/resources/img/#{r.category}"
+											width="200" />
+									</h:column>
+								</h:column>
+								<div>
+									<div></div>
+									<div>
+										<h1>
+											<a style="color: #1286AF;">#{r.title}</a>
+										</h1>
+
+										<h3 class="event-title">
+											<a href="#">#{r.description}</a>
+										</h3>
+										<h4 style="color: #AB111D">Assosition Name :
+											#{r.userAssos.username}</h4>
+										<br />
+										<h2 style="color: #C0BDBE">#{r.datedebut}</h2>
+									</div>
+								</div>
+							</h:panelGrid>
+
+							<f:facet name="actions">
+								<h:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+									<h:outputText styleClass="ui-icon ui-icon-help" />
+								</h:commandLink>
+								<h:commandLink
+									styleClass="ui-panel-titlebar-icon ui-corner-all ui-state-default">
+									<h:outputText styleClass="ui-icon ui-icon-star" />
+								</h:commandLink>
+								<h:commandButton action="#{sponsorBean.doSelect()}"
+									value="Sponsor Act">
+									<f:setPropertyActionListener value="#{r}"
+										target="#{sponsorBean.eventsSelected}"></f:setPropertyActionListener>
+								</h:commandButton>
+							</f:facet>
+						</p:panel>
+					</h:column>
+				</h:dataTable>
+				<h:dataTable value="#{sponsorBean.allevents}" var="r"
+					rendered="#{not sponsorBean.showDetails}">
+					<h:column>
+						<p:growl id="msgs" showDetail="true" />
+						<p:panel id="custom" header="Event Details"
+							style="margin-bottom:20px">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:graphicImage value="/resources/img/IFR.png" width="200" />
+								<div>
+									<div></div>
+									<div>
+										<h1>
+											<a style="color: #1286AF;">#{r.title}</a>
+										</h1>
+
+										<h3 class="event-title">
+											<a href="#">#{r.description}</a>
+										</h3>
+										<h4 style="color: #AB111D">#{r.userAssos.username}</h4>
+										<br />
+										<h2 style="color: #C0BDBE">#{r.datedebut}</h2>
+									</div>
+								</div>
+							</h:panelGrid>
+						</p:panel>
+					</h:column>
+
+				</h:dataTable>
+
+				<h:panelGrid columns="2" rendered="#{sponsorBean.showDetails}"
+					>
+					<h:column>
+						
+						<p:panel id="s" header="Event Details"
+							style="margin-bottom:20px">
+							<h:panelGrid columns="2" cellpadding="10">
+								<h:graphicImage
+									value="/resources/img/#{sponsorBean.eventsSelected.category}"
+									width="200" />
+								<div>
+									<div></div>
+									<div>
+										<h1>
+											<a style="color: #1286AF;">#{sponsorBean.eventsSelected.title}</a>
+										</h1>
+
+										<h3 class="event-title">
+											<a href="#">#{sponsorBean.eventsSelected.description}</a>
+										</h3>
+
+
+										<h4 style="color: #AB111D">#{sponsorBean.eventsSelected.userAssos.username}</h4>
+										<br />
+									</div>
+								</div>
+							</h:panelGrid>
+							</p:panel>
+						</h:column>
+				</h:panelGrid>
+				
+
+				<p:panel id="e" header="Sponsor List"
+					style="margin-bottom:20px">
+					<h:panelGrid columns="2" cellpadding="10"
+						rendered="#{sponsorBean.showDetails}">
+
+						<h:outputText value="produit" />
+						<h:inputText value="#{sponsorBean.produit}" />
+						<h:outputText value="quantity" />
+						<h:inputText value="#{sponsorBean.quantity}" />
+						<h:outputText value="Price" />
+						<h:inputText value="#{sponsorBean.sponsor_price}" />
+						<h:outputText value="notes" />
+						<h:inputText value="#{sponsorBean.notes}" />
+						<h:commandButton action="#{sponsorBean.doCancel}" value="cancel" />
+						<h:commandButton action="#{sponsorBean.doSaveOrUpdateSoponsor()}"
+							value="sponsoring" />
+					</h:panelGrid>
+				</p:panel>
+				
+
+
+			</div>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
